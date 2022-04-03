@@ -9,25 +9,33 @@ public class LevelManager : MonoBehaviour
     public GameObject confiner;
     public List<GameObject> currentLevelParts;
 
-    private int[] level = { 0, 1, 0, 0, 1, 1 };
+    private int[] level = { 0, 1, 0, 2, 1, 1 };
 
     private int currentLevel = 0;
 
     public Vector3 currentStopPoint;
+
+    public Vector3 spawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         confiner = GameObject.Find("CameraConfiner");
-
         currentStopPoint = player.transform.position;
+        spawnPoint = currentStopPoint;
+
         initializeParts();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player.transform.position.y < -10)
+        {
+            player.GetComponent<Player>().respawnPlayer(spawnPoint);
+            return;
+        }
         if (player.transform.position.x > currentStopPoint.x)
         {
             confiner.transform.position = new Vector3(
@@ -60,6 +68,11 @@ public class LevelManager : MonoBehaviour
             currentStopPoint = currentLevelParts[1].transform.position;
         }
 
+    }
+
+    public void SetSpawnPoint(Vector3 position)
+    {
+        spawnPoint = position;
     }
 
     private void initializeParts()

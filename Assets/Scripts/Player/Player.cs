@@ -8,12 +8,14 @@ public class Player : MonoBehaviour
     public StateMachine stateMachine;
 
     public PlayerMovingState movingState;
+    public PlayerRespawnState respawnState;
 
 
     void Start()
     {
         stateMachine = new StateMachine();
         movingState = new PlayerMovingState(this);
+        respawnState = new PlayerRespawnState(this);
 
         stateMachine.ChangeState(movingState);
     }
@@ -22,5 +24,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         stateMachine.Update();
+    }
+
+    public void respawnPlayer(Vector3 vector)
+    {
+        if (stateMachine.currentState != respawnState)
+        {
+            Debug.Log(vector);
+            respawnState.SetSpawnPoint(vector);
+            stateMachine.ChangeState(respawnState);
+        }
+    }
+
+    public void activatePlayerState()
+    {
+        stateMachine.ChangeState(movingState);
     }
 }
