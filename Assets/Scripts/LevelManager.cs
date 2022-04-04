@@ -86,6 +86,7 @@ public class LevelManager : MonoBehaviour
             if (currentTemperature > maxTemperature)
             {
                 SoundManager.instance.MELTING.Play();
+                SoundManager.instance.StopBackgroundMusic();
                 currentState = LevelState.MELTED;
                 player.GetComponent<Player>().melt();
             }

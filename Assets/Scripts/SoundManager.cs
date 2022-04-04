@@ -22,4 +22,9 @@ public class SoundManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+    public void StopBackgroundMusic()
+    {
+        GameObject.Find("Background Music").GetComponent<AudioSource>().Stop();
+    }
 }
