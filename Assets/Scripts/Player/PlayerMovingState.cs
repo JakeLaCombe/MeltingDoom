@@ -54,9 +54,9 @@ public class PlayerMovingState : IState
             vx = 0.0f;
         }
 
-        if (input.ActionHold() && Mathf.Abs(vy) <= 0.0001f)
+        if (input.ActionHold() && Mathf.Abs(vy) <= 0.001f)
         {
-            vy = 11.0f;
+            vy = 6.0f;
             // SoundManager.instance.Jump.Play();
         }
         else if (!input.ActionHold() && vy > 1.0f)
@@ -76,6 +76,8 @@ public class PlayerMovingState : IState
         }
 
         rigidBody.velocity = new Vector2(vx, vy);
+
+        Debug.Log(vx + " : " + vy);
         animator.SetBool("isRunning", Mathf.Abs(vx) > 0.0001f);
         animator.SetBool("isJumping", Mathf.Abs(vy) > 0.0001f);
         animator.SetBool("isFalling", vy < -0.0001f);

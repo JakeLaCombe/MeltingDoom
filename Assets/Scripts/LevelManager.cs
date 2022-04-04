@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
 
         initializeParts();
         currentState = LevelState.PLAYING;
-        coins = 3;
+        coins = 0;
     }
 
     // Update is called once per frame
