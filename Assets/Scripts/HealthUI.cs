@@ -9,14 +9,17 @@ public class HealthUI : MonoBehaviour
     private GameObject thermometer;
     private GameObject temperature;
     private LevelManager levelManager;
-
-    public TextMeshProUGUI coins;
+    private GameObject gameOver;
+    private TextMeshProUGUI coins;
+    private GameObject pause;
 
     void Start()
     {
         thermometer = this.transform.Find("Thermometer").gameObject;
         temperature = thermometer.transform.Find("Temperature").gameObject;
         coins = this.transform.Find("Coins").GetComponent<TextMeshProUGUI>();
+        gameOver = this.transform.Find("Game Over").gameObject;
+        pause = this.transform.Find("Paused").gameObject;
     }
 
     // Update is called once per frame
@@ -34,6 +37,9 @@ public class HealthUI : MonoBehaviour
         );
 
         coins.text = "x " + levelManager.GetCoins();
+
+        gameOver.SetActive(levelManager.GetMaxTemperature() < levelManager.GetCurrentTemperature());
+        pause.SetActive(Time.timeScale <= 0.0f);
     }
 }
 

@@ -61,4 +61,19 @@ public class KeyboardInput : MonoBehaviour, IInputable
     {
         return Input.GetKey(ACTION);
     }
+
+    public bool SecondaryAction()
+    {
+        return Input.GetKeyDown(SECONDARY_ACTION);
+    }
+
+    public bool SecondaryActionHold()
+    {
+        return Input.GetKey(SECONDARY_ACTION);
+    }
+
+    public bool Pause()
+    {
+        return Input.GetKeyDown(PAUSE);
+    }
 }

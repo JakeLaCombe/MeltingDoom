@@ -47,4 +47,9 @@ public class Player : MonoBehaviour
     {
         stateMachine.ChangeState(deadState);
     }
+
+    public void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        stateMachine.currentState.OnTriggerEnter2D(collider2D);
+    }
 }

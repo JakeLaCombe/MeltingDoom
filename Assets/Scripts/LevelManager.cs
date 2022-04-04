@@ -141,12 +141,17 @@ public class LevelManager : MonoBehaviour
 
     public void decreaseTemperature(int amount)
     {
-        currentTemperature -= 1;
+        currentTemperature -= amount;
     }
 
     public void AddCoins(int coins)
     {
         this.coins += coins;
+    }
+
+    public void RemoveCoins(int coins)
+    {
+        this.coins -= coins;
     }
 
     public int GetCoins()

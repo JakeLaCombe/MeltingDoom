@@ -5,11 +5,11 @@ using UnityEngine;
 public class LemonadeStand : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    private bool activated;
 
     void Start()
     {
-
+        activated = false;
     }
 
     // Update is called once per frame
@@ -27,15 +27,14 @@ public class LemonadeStand : MonoBehaviour
             return;
         }
 
-        Debug.Log("Triggered With Player");
-
-        this.GetComponent<BoxCollider2D>().enabled = false;
-
-        GameObject levelManager = GameObject.FindWithTag("Level Manager");
-
-        if (levelManager != null)
+        if (!activated)
         {
-            levelManager.GetComponent<LevelManager>().SetSpawnPoint(new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, this.transform.position.z));
+            GameObject levelManager = GameObject.FindWithTag("Level Manager");
+
+            if (levelManager != null)
+            {
+                levelManager.GetComponent<LevelManager>().SetSpawnPoint(new Vector3(this.transform.position.x, this.transform.position.y + 1.0f, this.transform.position.z));
+            }
         }
     }
 }

@@ -13,8 +13,8 @@ public interface IInputable
     bool RightHold();
     bool Action();
     bool ActionHold();
-    // bool SecondaryAction();
-    // bool SecondaryActionHold();
-    // bool Pause();
+    bool SecondaryAction();
+    bool SecondaryActionHold();
+    bool Pause();
     // bool StartButton();
 }

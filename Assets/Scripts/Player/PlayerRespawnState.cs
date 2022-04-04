@@ -24,24 +24,22 @@ public class PlayerRespawnState : IState
     }
     public void Execute()
     {
-
+        rigidBody.velocity = new Vector2(0.0f, 0.0f);
     }
     public void Exit() { }
 
     public void SetSpawnPoint(Vector3 vector)
     {
-        Debug.Log("Spawn Point");
-        Debug.Log(vector);
         spawnPoint = vector;
     }
 
     public IEnumerator startRespawn()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(3.0f);
         player.transform.position = spawnPoint;
-        Debug.Log("Spawned");
-        Debug.Log(spawnPoint);
         player.activatePlayerState();
     }
     public void OnTriggerEnter2D(Collider2D other) { }
+
+    public void OnTriggerExit2D(Collider2D other) { }
 }
