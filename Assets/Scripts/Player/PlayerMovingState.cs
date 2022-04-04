@@ -57,7 +57,7 @@ public class PlayerMovingState : IState
         if (input.ActionHold() && Mathf.Abs(vy) <= 0.001f)
         {
             vy = 6.0f;
-            // SoundManager.instance.Jump.Play();
+            SoundManager.instance.JUMP.Play();
         }
         else if (!input.ActionHold() && vy > 1.0f)
         {
@@ -70,6 +70,7 @@ public class PlayerMovingState : IState
 
             if (levelManager.GetCoins() >= 5)
             {
+                SoundManager.instance.LEMONADE.Play();
                 levelManager.RemoveCoins(5);
                 levelManager.decreaseTemperature(10);
             }
@@ -77,7 +78,6 @@ public class PlayerMovingState : IState
 
         rigidBody.velocity = new Vector2(vx, vy);
 
-        Debug.Log(vx + " : " + vy);
         animator.SetBool("isRunning", Mathf.Abs(vx) > 0.0001f);
         animator.SetBool("isJumping", Mathf.Abs(vy) > 0.0001f);
         animator.SetBool("isFalling", vy < -0.0001f);

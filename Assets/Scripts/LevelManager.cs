@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
     {
         if (currentState == LevelState.PLAYING)
         {
-            if (player.transform.position.y < -10)
+            if (player.transform.position.y < -5)
             {
                 player.GetComponent<Player>().respawnPlayer(spawnPoint);
                 return;
@@ -85,6 +85,7 @@ public class LevelManager : MonoBehaviour
 
             if (currentTemperature > maxTemperature)
             {
+                SoundManager.instance.MELTING.Play();
                 currentState = LevelState.MELTED;
                 player.GetComponent<Player>().melt();
             }

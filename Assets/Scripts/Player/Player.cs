@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     {
         if (stateMachine.currentState != respawnState)
         {
-            Debug.Log(vector);
             respawnState.SetSpawnPoint(vector);
             stateMachine.ChangeState(respawnState);
         }

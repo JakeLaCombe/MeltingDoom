@@ -28,10 +28,12 @@ public class Pickup : MonoBehaviour
 
         if (type == PickUpType.ICE_CUBE)
         {
+            SoundManager.instance.ICE_CUBE.Play();
             manager.decreaseTemperature(1);
         }
         else
         {
+            SoundManager.instance.COIN.Play();
             manager.AddCoins(1);
         }
 
