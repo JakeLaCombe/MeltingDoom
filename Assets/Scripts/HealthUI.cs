@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HealthUI : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class HealthUI : MonoBehaviour
     private GameObject temperature;
     private LevelManager levelManager;
 
+    public TextMeshProUGUI coins;
+
     void Start()
     {
         thermometer = this.transform.Find("Thermometer").gameObject;
         temperature = thermometer.transform.Find("Temperature").gameObject;
+        coins = this.transform.Find("Coins").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,8 @@ public class HealthUI : MonoBehaviour
             1.0f,
             1.0f
         );
+
+        coins.text = "x " + levelManager.GetCoins();
     }
 }
 

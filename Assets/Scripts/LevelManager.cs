@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
 
         initializeParts();
         currentState = LevelState.PLAYING;
-        coins = 0;
+        coins = 3;
     }
 
     // Update is called once per frame
@@ -147,6 +147,11 @@ public class LevelManager : MonoBehaviour
     public void AddCoins(int coins)
     {
         this.coins += coins;
+    }
+
+    public int GetCoins()
+    {
+        return this.coins;
     }
 }
 
