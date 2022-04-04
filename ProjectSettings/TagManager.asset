@@ -42,3 +42,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background Default
+    uniqueID: 4270686811
+    locked: 0
+  - name: Background Secondary
+    uniqueID: 1954080545
+    locked: 0
+  - name: Platforms
+    uniqueID: 625141149
+    locked: 0
+  - name: Platform Tops
+    uniqueID: 40966913
+    locked: 0
+  - name: Lemonade Stands
+    uniqueID: 1068437345
+    locked: 0
+  - name: Power Ups
+    uniqueID: 2297675453
+    locked: 0
+  - name: Player
+    uniqueID: 3867734259
+    locked: 0
+  - name: Platform Holes
+    uniqueID: 2594616589
+    locked: 0

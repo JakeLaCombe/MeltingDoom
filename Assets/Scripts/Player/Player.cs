@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     public PlayerMovingState movingState;
     public PlayerRespawnState respawnState;
+    public PlayerDeadState deadState;
 
 
     void Start()
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
         stateMachine = new StateMachine();
         movingState = new PlayerMovingState(this);
         respawnState = new PlayerRespawnState(this);
+        deadState = new PlayerDeadState(this);
 
         stateMachine.ChangeState(movingState);
     }
@@ -39,5 +41,10 @@ public class Player : MonoBehaviour
     public void activatePlayerState()
     {
         stateMachine.ChangeState(movingState);
+    }
+
+    public void melt()
+    {
+        stateMachine.ChangeState(deadState);
     }
 }

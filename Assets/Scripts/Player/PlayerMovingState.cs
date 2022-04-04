@@ -8,11 +8,14 @@ public class PlayerMovingState : IState
 
     private Rigidbody2D rigidBody;
     private IInputable input;
+
+    private Animator animator;
     public PlayerMovingState(Player player)
     {
         this.player = player;
         rigidBody = this.player.GetComponent<Rigidbody2D>();
         input = this.player.GetComponent<IInputable>();
+        animator = this.player.GetComponent<Animator>();
     }
     // Start is called before the first frame update
     public void Enter() { }
@@ -48,13 +51,9 @@ public class PlayerMovingState : IState
         }
 
         rigidBody.velocity = new Vector2(vx, vy);
-        // player.animator.SetBool("isRunning", Mathf.Abs(vx) > 0.0001f);
-        // player.animator.SetBool("isAirborne", Mathf.Abs(vy) > 0.0001f);
-
-        if (!player.GetComponent<SpriteRenderer>().isVisible && player.transform.position.y < -15.0f)
-        {
-            GameObject.Destroy(player.gameObject);
-        }
+        animator.SetBool("isRunning", Mathf.Abs(vx) > 0.0001f);
+        animator.SetBool("isJumping", Mathf.Abs(vy) > 0.0001f);
+        animator.SetBool("isFalling", vy < -0.0001f);
     }
     public void Exit() { }
     public void OnTriggerEnter2D(Collider2D other) { }
